@@ -45,7 +45,7 @@ int main( void ) {
      cudaMemcpy( dev_b, b, N * sizeof(int),
                               cudaMemcpyHostToDevice ) ;
 
-    add<<<N,1>>>( dev_a, dev_b, dev_c );
+    add<<<2,1>>>( dev_a, dev_b, dev_c );
 
     // copy the array 'c' back from the GPU to the CPU
      cudaMemcpy( c, dev_c, N * sizeof(int),
