@@ -2,6 +2,14 @@
 #include <stdio.h>
 #define N 10
 
+#define HANDLE_ERROR( err ) ( HandleError( err, __FILE__, __LINE__ ) )
+static void HandleError(cudaError_t err, const char *file, int line)
+{if (err != cudaSuccess)
+{printf("%s in %s at line %d\n", cudaGetErrorString(err),file, line);
+exit(EXIT_FAILURE);
+}
+}
+
 __global__ void add( int *a, int *b, int *c ) {
  int tid = blockIdx.x; // handle the data at this index
  if (tid < N)
