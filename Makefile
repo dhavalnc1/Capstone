@@ -3,11 +3,11 @@ NVCCFLAGS = -ccbin g++ -m64 -gencode arch=compute_35,code=sm_35 -gencode arch=co
 INCLUDES = -I/usr/local/cuda-8.0/samples/common/inc/
 
 
-all: addGpu
+all: testGpu
 
 
-addGpu: addGpu.o
-        nvcc $(NVCCFLAGS) $(INCLUDES) addGpu.cu -o addGpu
+testGpu: testGpu.o
+        nvcc $(NVCCFLAGS) $(INCLUDES) testGpu.cu -o testGpu
 
-addGpu.o: addGpu.cu
-        nvcc $(NVCCFLAGS) $(INCLUDES) addGpu.cu -o addGpu
+testGpu.o: testGpu.cu
+        nvcc $(NVCCFLAGS) $(INCLUDES) testGpu.cu -o testGpu
